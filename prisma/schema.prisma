@@ -48,17 +48,97 @@ model Account {
   @@unique([provider, providerAccountId])
 }
 
-// model Alumno {
+// model Jugador {
 //   id               Int      @id @default(autoincrement())
 //   nombre           String   @db.VarChar(255)
 //   localidad        String   @db.VarChar(255)
 //   fechaNacimiento  DateTime?
-//   profesores       Profesor[]
+//   entrenadores     Entrenador[]
 // }
 
-// model Profesor {
+// model Entrenador {
 //   id           Int      @id @default(autoincrement())
 //   nombre       String   @db.VarChar(255)
 //   especialidad String   @db.VarChar(255)
-//   alumnos      Alumno[]
+//   jugadores    Jugador[]
 // }
+
+model Jugador {
+  id                  Int       @id @default(autoincrement())
+  nombre              String
+  apellidos           String
+  fechaNacimiento     DateTime
+  categoria           Categoria @relation(fields: [categoriaId], references: [id])
+  lateralidad         String
+  posicionPrincipal   String
+  posicionSecundaria  String
+  sexo                String
+  dni                 String    @unique
+  foto                String
+  localidad           String
+  telefono            String
+  telefonoPadre       String
+  telefonoMadre       String
+  tallaCamiseta       String
+  tallaChandal        String
+  tallaSudadera       String
+  numeroPie           Int
+  mail1               String
+  mail2               String
+  notas               String?
+  nombrePadre         String
+  nombreMadre         String
+  goles               Int
+  fechaReconocimientoMedico DateTime
+
+  categoriaId         Int
+  entrenador           Entrenador @relation(fields: [entrenadorId], references: [id])
+  entrenadorId        Int
+
+  registrosAsistencias RegistroAsistencia[]
+}
+
+model Entrenador {
+  id                  Int       @id @default(autoincrement())
+  nombre              String
+  apellidos           String
+  fechaNacimiento     DateTime
+  categoria           Categoria @relation(fields: [categoriaId], references: [id])
+  dni                 String    @unique
+  foto                String
+  localidad           String
+  telefono            String
+  tallaCamiseta       String
+  tallaChandal        String
+  tallaSudadera       String
+  mail1               String
+  mail2               String
+  notas               String?
+  controlAsistencia   String
+  calendario          String
+  titulacion          String
+
+  categoriaId         Int
+  jugadores            Jugador[]
+  registrosAsistencias RegistroAsistencia[]
+}
+
+model Categoria {
+  id                  Int       @id @default(autoincrement())
+  nombre              String
+  entrenadores         Entrenador[]
+  jugadores            Jugador[]
+}
+
+model RegistroAsistencia {
+  id                  Int       @id @default(autoincrement())
+  fechaEntrenamiento  DateTime
+  nota                String?
+
+  entrenadorId         Int
+  jugadorId            Int
+
+  entrenador           Entrenador @relation(fields: [entrenadorId], references: [id])
+  jugador              Jugador    @relation(fields: [jugadorId], references: [id])
+
+}
