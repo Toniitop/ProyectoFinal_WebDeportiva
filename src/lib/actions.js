@@ -63,7 +63,6 @@ export async function login(formData) {
     } else {
         return { error: 'Credenciales incorrectas.' }
     }
-
 }
 
 // LOGIN google
@@ -83,4 +82,50 @@ export async function logout() {
     } catch (error) {
         throw error
     }
+}
+
+//JUGADORES
+
+export async function getJugadores() {
+    try {
+        const jugadores = await prisma.jugador.findMany()
+        return jugadores;
+    } catch (error) {
+        return null;
+    }
+}
+
+export async function getJugador(id) {
+    try {
+        const jugador = await prisma.jugador.findUnique({
+            where: { id },
+            include: {
+                entrenadores: true
+            }
+        });
+        console.log(jugador);
+        return jugador;
+    } catch (error) {
+        return null;
+    }
+}
+
+export async function newJugador(formData) {
+    try {
+        const nombre = formData.get('nombre');
+        const apellidos = formData.get("apellidos");
+        const fechaNacimiento = new Date (formData.get("fecha_nacimiento"));
+        const dni = formData.get("dni");
+    } catch (error) {
+        
+    }
+}
+
+//ENTRENADORES
+
+async function getEntrenadoresIds() {
+    const entIds = await prisma.entrenador.findMany({
+        select: { id: true },
+    });
+    return entIds.map((e) => e.id)
 }

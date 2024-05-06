@@ -13,7 +13,7 @@ async function Dashboard() {
         <>
             <div className="relative z-10 flex flex-col items-center justify-center min-h-screen">
                 <ImgFondo />
-                <div className="w-full max-w-md p-8 bg-gray-800 rounded-lg shadow-lg mt-8 flex flex-col items-center">
+                <div className="w-full max-w-md p-8 bg-gray-800 rounded-lg shadow-lg mt-8 flex flex-col items-center border-4 border-green-600">
                     <div className="flex flex-col items-center pb-10">
                         {session?.user.image ? (
                             <img

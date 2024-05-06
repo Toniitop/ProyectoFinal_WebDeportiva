@@ -38,13 +38,17 @@ function About() {
                     </ul>
                 </div>
 
+                <div className="">
+                    <img className="mx-auto h-30 md:h-auto rounded mb-8" src="/aboutUs.png" alt="Sobre Nosotros" />
+                </div>
+
                 <p className="text-lg mb-8">
                     Únete a nuestro club deportivo y descubre el poder de una gestión deportiva eficiente. ¡Simplifica, organiza y mejora tu experiencia deportiva con nosotros!
                 </p>
 
                 <div className="text-center">
                     <Link href="/" className="text-white bg-green-600 hover:bg-teal-600 transition duration-400 py-2 px-4 rounded" >
-                            Inicio
+                        Inicio
                     </Link>
                 </div>
             </div>
