@@ -13,7 +13,7 @@ async function page() {
         <>
             <div className="relative z-10 flex flex-col items-center justify-center min-h-screen">
                 <ImgFondo />
-                <div className="w-full max-w-md p-4 md:p-8 bg-gray-800 rounded-lg shadow-lg mt-8 flex flex-col items-center border-4 border-yellow-600">
+                <div className="w-full max-w-md p-4 md:p-8 bg-gray-800 rounded-lg shadow-lg mt-8 mb-8 flex flex-col items-center border-4 border-yellow-600">
                     <div className="flex flex-col items-center pb-10">
                         {session?.user.image ? (
                             <img
@@ -52,7 +52,10 @@ async function page() {
                                 <Link legacyBehavior href="/">Entrenadores</Link>
                             </li>
                             <li className="w-full py-2 px-4 text-xs md:text-sm font-medium text-white focus:outline-none bg-green-600 rounded-lg border border-transparent transition duration-400 hover:bg-teal-600 focus:z-10 focus:ring-4 focus:ring-gray-100 mt-2">
-                                <Link legacyBehavior href="/">Jugadores</Link>
+                                <Link legacyBehavior href="/jugadores">Jugadores</Link>
+                            </li>
+                            <li className="w-full py-2 px-4 text-xs md:text-sm font-medium text-white focus:outline-none bg-green-600 rounded-lg border border-transparent transition duration-400 hover:bg-teal-600 focus:z-10 focus:ring-4 focus:ring-gray-100 mt-2">
+                                <Link legacyBehavior href="/categorias">Categorias</Link>
                             </li>
                         </ul>
                     </div>

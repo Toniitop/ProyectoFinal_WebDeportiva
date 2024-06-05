@@ -1,13 +1,13 @@
-import Form from "@/components/FormProfesor"
+import Form from "@/components/FormEntrenador"
 import Button from "@/components/Button"
 import { prisma } from '@/lib/prisma'
-import { deleteProfesor } from "@/lib/actions"
-import Atras from '@/components/buttonBack'
+import { deleteEntrenador } from "@/lib/actions"
+import Atras from '@/components/buttonBackEntrenadores'
 
 export const dynamic = 'force-dynamic'
 
 async function page({ params }) {
-  const profesor = await prisma.profesor.findUnique({
+  const entrenador = await prisma.entrenador.findUnique({
     where: {
       id: Number(params.id),
     },
@@ -15,9 +15,9 @@ async function page({ params }) {
 
   return (
     <div className="container mx-auto p-4">
-      <h3 className="inline-block bg-red-600 text-white text-2xl font-bold mb-4 p-2 rounded-md">Eliminar profesor</h3>
-      <Form action={deleteProfesor} profesor={profesor} disabled={true} >
-        <Button title='Eliminar profesor' />
+      <h3 className="inline-block bg-red-600 text-white text-2xl font-bold mb-4 p-2 rounded-md">Eliminar entrenador</h3>
+      <Form action={deleteEntrenador} entrenador={entrenador} disabled={true} >
+        <Button title='Eliminar entrenador' />
       </Form>
       <Atras />
     </div>

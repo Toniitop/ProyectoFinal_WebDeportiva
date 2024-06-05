@@ -1,12 +1,12 @@
-function LayoutEntrenadores({ children }) {
+function layoutCategorias({ children }) {
     return (
         <section className="container mx-auto p-4">
             <br />
-            <h1 className="text-3xl underlined font-bold mb-4">Entrenadores</h1>
+            <h1 className="text-3xl underlined font-bold mb-4">Categorias</h1>
             <hr className="mb-4 border-t-2 border-gray-500" />
             {children}
         </section>
-    );
+    )
 }
 
-export default LayoutEntrenadores;
+export default layoutCategorias

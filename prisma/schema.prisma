@@ -44,130 +44,77 @@ model Account {
   @@unique([provider, providerAccountId])
 }
 
-// Definición del modelo Jugadores
-model Jugadores {
-  id                          Int                   @id @default(autoincrement())
-  nombre                      String
-  apellidos                   String
-  fecha_nacimiento            DateTime?
-  categoriaId                 Int
-  lateralidad                 String?
-  posicion_principal          String?
-  posicion_secundaria         String?
-  sexo                        String?
-  dni                         String                @unique
-  foto                        String?
-  localidad                   String?
-  telefono                    String?
-  telefono_padre              String?
-  telefono_madre              String?
-  talla_camiseta              String?
-  talla_chandal               String?
-  talla_sudadera              String?
-  numero_pie                  Int?
-  mail_1                      String?
-  mail_2                      String?
-  notas                       String?
-  nombre_padre                String?
-  nombre_madre                String?
-  goles                       Int?
-  fecha_reconocimiento_medico DateTime?
+//Tablas de la bbdd restante
 
-  categoria                   Categoria             @relation(fields: [categoriaId], references: [id])
-  entrenamientos JugadoresEntrenamiento[]
-}
-
-// Definición del modelo Entrenadores
-model Entrenadores {
-  id                  Int                 @id @default(autoincrement())
+model Jugador{
+  id                  Int   @id @default(autoincrement())
   nombre              String
-  apellidos           String
-  fecha_nacimiento    DateTime?
-  dni                 String              @unique
-  foto                String?
+  apellido            String
+  fechaNacimiento     DateTime?
+  //dni                 String  @unique
+  lateralidad         String?
+  posicionPrincipal   String?
+  posicionSecundaria  String?
+  genero              String?
+  //foto                String?
   localidad           String?
   telefono            String?
-  talla_camiseta      String?
-  talla_chandal       String?
-  talla_sudadera      String?
-  mail_1              String?
-  mail_2              String?
+  telefonoPadre       String?
+  telefonoMadre       String?
+  dorsal              String?
+  tallaCamiseta       String?
+  tallaChandal        String?
+  tallaSudadera       String?
+  pie                 String?
+  email1              String?
+  email2              String?
   notas               String?
-  titulacion          String?
+  nombrePadre         String?
+  nombreMadre         String?
+  goles               Int?
+  fechaExamenMedico   DateTime?
 
-  categoria           Categoria           @relation(fields: [dni], references: [temporada])
-  entrenamientos Entrenamiento[]
+  entrenamientos    Entrenamiento[]
+
+  categoriaId         Int?
+  categoria         Categoria? @relation(fields: [categoriaId], references: [id])
 }
 
-// Definición del modelo Categoría
+model Entrenador {
+  id                Int   @id @default(autoincrement())
+  nombre            String
+  apellido          String
+  fechaNacimiento   DateTime?
+  dni               String  @unique
+  //foto              String?
+  localidad         String?
+  telefono          String?
+  tallaCamiseta     String?
+  tallaChandal      String?
+  tallaSudadera     String?
+  email1            String?
+  email2            String?
+  notas             String?
+  titulacion        String?
+
+  entrenamientos    Entrenamiento[]
+
+  categoriaNombre   String  @unique
+  categoria         Categoria @relation(fields: [categoriaNombre], references: [nombre])
+}
+
 model Categoria {
-  id                  Int                 @id @default(autoincrement())
-  nombre              String
-  temporada           String              @unique
-  entrenador          Entrenadores?
-  jugadores           Jugadores[]
+  id          Int   @id @default(autoincrement())
+  nombre      String   @unique
+  jugadores   Jugador[]
+  entrenador  Entrenador?
 }
-
 
 model Entrenamiento {
-  id                  Int                 @id @default(autoincrement())
-  fecha               DateTime
-  entrenadorId        Int
-
-  entrenador          Entrenadores       @relation(fields: [entrenadorId], references: [id])
-  jugadores   JugadoresEntrenamiento[]
+  id              Int   @id @default(autoincrement())
+  fecha           DateTime?
+  
+  entrenadorId    Int?
+  entrenador      Entrenador?  @relation(fields: [entrenadorId], references: [id])
+  jugadores       Jugador[]
 }
-
-//Faltas asistencia, tabla N:M que sale de la relación
-model JugadoresEntrenamiento {
-  entrenamientoId Int
-  jugadoresId     Int
-  asistencia      Boolean
-  calendario      DateTime
-  entrenamiento   Entrenamiento @relation(fields: [entrenamientoId], references: [id])
-  jugadores       Jugadores     @relation(fields: [jugadoresId], references: [id])
-
-  @@id([entrenamientoId, jugadoresId])
-}
-
-//adición de temporada y cambios de temporada
-
-// model Temporada { //quizas sea esta solo la que necesito
-//   id       Int      @id @default(autoincrement())
-//   nombre   String
-//   estado   String
-//   categorias Categoria[]
-// }
-
-// model Categoría {
-//   id           Int           @id @default(autoincrement())
-//   nombre       String
-
-//   temporada    Temporada     @relation(fields: [temporadaId], references: [id])
-//   temporadaId  Int
-
-//   entrenador   Entrenadores? @relation(fields: [entrenadorId], references: [id])
-//   entrenadorId Int?
-
-//   jugadores    Jugadores[]
-// }
-
-// model EntrenadoresPorTemporada {
-//   id            Int          @id @default(autoincrement())
-
-//   temporada     Temporada   @relation(fields: [temporadaId], references: [id])
-//   temporadaId   Int
-
-//   entrenador    Entrenadores @relation(fields: [entrenadorId], references: [id])
-//   entrenadorId  Int
-// }
-
-// model JugadoresPorTemporada {
-//   id          Int        @id @default(autoincrement())
-
-//   temporada   Temporada @relation(fields: [temporadaId], references: [id])
-//   temporadaId Int
-
-//   jugador     Jugadores  @relation(fields: [jugadorId], references: [id])
-//   jugadorId   Int
-// }
