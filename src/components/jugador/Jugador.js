@@ -1,10 +1,10 @@
 function Jugador ({children, jugador}) {
     return (
         <div className="card">
-            <p><strong>{jugador.nombre} {jugador.apellidos}</strong></p>
-            <p>{jugador.telefono}</p>
-            <p>{jugador.email1}</p>
-            <p>{jugador.fechaNacimiento.toLocaleDateString('es-ES')}</p>
+            <p>Nombre: <strong>{jugador.nombre} {jugador.apellidos}</strong></p>
+            <p>📱 {jugador.telefono}</p>
+            <p>📧 {jugador.email1}</p>
+            <p>📅 {jugador.fechaNacimiento.toLocaleDateString('es-ES')}</p>
             {children}
         </div>
     )

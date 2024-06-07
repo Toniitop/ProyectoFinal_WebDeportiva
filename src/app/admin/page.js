@@ -14,7 +14,7 @@ async function page() {
             <div className="relative z-10 flex flex-col items-center justify-center min-h-screen">
                 <ImgFondo />
                 <div className="w-full max-w-md p-4 md:p-8 bg-gray-800 rounded-lg shadow-lg mt-8 mb-8 flex flex-col items-center border-4 border-yellow-600">
-                    <div className="flex flex-col items-center pb-10">
+                    <div className="flex flex-col items-center pb-10 w-full">
                         {session?.user.image ? (
                             <img
                                 src={session?.user.image}
@@ -49,13 +49,16 @@ async function page() {
                                 <Link legacyBehavior href="/auth/register">Registrar Entrenador</Link>
                             </li>
                             <li className="w-full py-2 px-4 text-xs md:text-sm font-medium text-white focus:outline-none bg-green-600 rounded-lg border border-transparent transition duration-400 hover:bg-teal-600 focus:z-10 focus:ring-4 focus:ring-gray-100 mt-2">
-                                <Link legacyBehavior href="/">Entrenadores</Link>
+                                <Link legacyBehavior href="/entrenadores">Entrenadores</Link>
                             </li>
                             <li className="w-full py-2 px-4 text-xs md:text-sm font-medium text-white focus:outline-none bg-green-600 rounded-lg border border-transparent transition duration-400 hover:bg-teal-600 focus:z-10 focus:ring-4 focus:ring-gray-100 mt-2">
                                 <Link legacyBehavior href="/jugadores">Jugadores</Link>
                             </li>
                             <li className="w-full py-2 px-4 text-xs md:text-sm font-medium text-white focus:outline-none bg-green-600 rounded-lg border border-transparent transition duration-400 hover:bg-teal-600 focus:z-10 focus:ring-4 focus:ring-gray-100 mt-2">
                                 <Link legacyBehavior href="/categorias">Categorias</Link>
+                            </li>
+                            <li className="w-full py-2 px-4 text-xs md:text-sm font-medium text-white focus:outline-none bg-green-600 rounded-lg border border-transparent transition duration-400 hover:bg-teal-600 focus:z-10 focus:ring-4 focus:ring-gray-100 mt-2">
+                                <Link legacyBehavior href="/entrenamientos">Entrenamientos</Link>
                             </li>
                         </ul>
                     </div>
@@ -74,3 +77,27 @@ async function page() {
 }
 
 export default page
+
+    // <Link legacyBehavior href = "/jugadores" >
+    //     <a className="relative overflow-hidden inline-block">
+    //         <button
+    //             type='button'
+    //             className="overflow-hidden relative w-32 p-2 h-12 bg-gray-900 text-white border-none rounded-md text-m font-bold cursor-pointer relative z-20 group"
+    //         >
+    //             Jugadores
+    //             <span
+    //                 className="absolute w-36 h-32 -top-8 -left-2 bg-white rotate-12 transform scale-x-0 group-hover:scale-x-100 transition-transform group-hover:duration-500 duration-1000 origin-left"
+    //             ></span>
+    //             <span
+    //                 className="absolute w-36 h-32 -top-8 -left-2 bg-teal-500 rotate-12 transform scale-x-0 group-hover:scale-x-100 transition-transform group-hover:duration-700 duration-700 origin-left"
+    //             ></span>
+    //             <span
+    //                 className="absolute w-36 h-32 -top-8 -left-2 bg-teal-600 rotate-12 transform scale-x-0 group-hover:scale-x-50 transition-transform group-hover:duration-1000 duration-500 origin-left"
+    //             ></span>
+    //             <span
+    //                 className="group-hover:opacity-100 group-hover:duration-1000 duration-100 opacity-0 absolute top-2.5 left-6 z-10">
+    //                 Jugadores
+    //             </span>
+    //         </button>
+    //     </a>
+    // </Link >

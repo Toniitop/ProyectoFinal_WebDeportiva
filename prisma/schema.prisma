@@ -85,7 +85,7 @@ model Entrenador {
   nombre            String
   apellido          String
   fechaNacimiento   DateTime?
-  dni               String  @unique
+  //dni               String  @unique
   //foto              String?
   localidad         String?
   telefono          String?
@@ -94,25 +94,26 @@ model Entrenador {
   tallaSudadera     String?
   email1            String?
   email2            String?
-  notas             String?
   titulacion        String?
+  notas             String?
 
   entrenamientos    Entrenamiento[]
 
-  categoriaNombre   String  @unique
-  categoria         Categoria @relation(fields: [categoriaNombre], references: [nombre])
+  //categoriaNombre   String  @unique
+  //categoria         Categoria @relation(fields: [categoriaNombre], references: [nombre])
 }
 
 model Categoria {
   id          Int   @id @default(autoincrement())
   nombre      String   @unique
   jugadores   Jugador[]
-  entrenador  Entrenador?
+  //entrenador  Entrenador?
 }
 
 model Entrenamiento {
   id              Int   @id @default(autoincrement())
   fecha           DateTime?
+  notas           String?
   
   entrenadorId    Int?
   entrenador      Entrenador?  @relation(fields: [entrenadorId], references: [id])

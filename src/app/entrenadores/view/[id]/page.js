@@ -1,7 +1,7 @@
-import Form from "@/components/FormEntrenador"
+import Form from "@/components/entrenador/FormEntrenador"
 import { prisma } from '@/lib/prisma'
 import { getEntrenador } from "@/lib/actions"
-import Atras from '@/components/buttonBackEntrenadores'
+import Atras from '@/components/entrenador/buttonBackEntrenadores'
 
 export const dynamic = 'force-dynamic'
 

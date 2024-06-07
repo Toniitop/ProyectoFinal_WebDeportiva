@@ -95,6 +95,13 @@ async function getCategoriasIds() {
     return categoriasIds.map(categoria => categoria.id)
 }
 
+async function getEntrenadoresIds() {
+    const entrenadoresIds = await prisma.entrenador.findMany({
+        select: { id: true }
+    })
+    return entrenadoresIds.map(entrenador => entrenador.id)
+}
+
 
 
 // JUGADORES
@@ -239,6 +246,112 @@ export async function deleteJugador(formData) {
 }
 
 
+// ENTRENADORES 
+
+export async function getEntrenadores() {
+    try {
+        const entrenadores = await prisma.entrenador.findMany()
+        return entrenadores;
+    } catch (error) {
+        return null;
+    }
+}
+
+export async function getEntrenador(id) {  // obtener entrenador con entrenamientos
+    try {
+        const entrenador = await prisma.entrenador.findUnique({
+            where: { id },
+            include: { entrenamientos: true } //se refiere al campo de la tabla entrenamiento
+        })
+
+        console.log(entrenador);
+        return entrenador;
+    } catch (error) {
+        // console.log(error);  
+        return null;
+    }
+}
+
+export async function newEntrenador(formData) {
+    try {
+        const nombre = formData.get('nombre');
+        const apellido = formData.get('apellido');
+        const fechaNacimiento = new Date(formData.get('fechaNacimiento'));
+        const localidad = formData.get('localidad');
+        const telefono = formData.get('telefono');
+        const tallaCamiseta = formData.get('tallaCamiseta');
+        const tallaChandal = formData.get('tallaChandal');
+        const tallaSudadera = formData.get('tallaSudadera');
+        const email1 = formData.get('email1');
+        const email2 = formData.get('email2');
+        const titulacion = formData.get('titulacion');
+        const notas = formData.get('notas');
+
+        const entrenador = await prisma.entrenador.create({
+            data: {
+                nombre, apellido, fechaNacimiento, localidad,
+                telefono, tallaCamiseta, tallaChandal, tallaSudadera,
+                email1, email2, titulacion, notas
+            },
+        })
+
+        console.log(entrenador);
+        revalidatePath('/entrenadores')
+    } catch (error) {
+        console.log(error);
+    }
+    redirect('/entrenadores');
+}
+
+export async function editEntrenador(formData) {
+    const id = Number(formData.get('id'));
+    const nombre = formData.get('nombre');
+    const apellido = formData.get('apellido');
+    const fechaNacimiento = new Date(formData.get('fechaNacimiento'));
+    const localidad = formData.get('localidad');
+    const telefono = formData.get('telefono');
+    const tallaCamiseta = formData.get('tallaCamiseta');
+    const tallaChandal = formData.get('tallaChandal');
+    const tallaSudadera = formData.get('tallaSudadera');
+    const email1 = formData.get('email1');
+    const email2 = formData.get('email2');
+    const titulacion = formData.get('titulacion');
+    const notas = formData.get('notas');
+
+    try {
+        const entrenador = await prisma.entrenador.update({
+            where: { id },
+            data: {
+                nombre, apellido, fechaNacimiento, localidad,
+                telefono, tallaCamiseta, tallaChandal, tallaSudadera,
+                email1, email2, titulacion, notas
+            },
+        })
+        console.log(entrenador);
+        revalidatePath('/entrenadores')
+    } catch (error) {
+        console.log(error);
+    }
+    redirect('/entrenadores');
+}
+
+export async function deleteEntrenador(formData) {
+    try {
+        const id = Number(formData.get('id'))
+
+        const entrenador = await prisma.entrenador.delete({
+            where: { id },
+        })
+
+        console.log(entrenador);
+        revalidatePath('/entrenadores')
+    } catch (error) {
+        console.log(error);
+    }
+    redirect('/entrenadores');
+}
+
+
 // CATEGORIAS
 
 export async function getCategorias() {
@@ -313,4 +426,122 @@ export async function deleteCategoria(formData) {
     }
 
     redirect('/categorias');
+}
+
+
+
+//ENTRENAMIENTOS
+
+
+export async function getEntrenamientos() {
+    try {
+        const entrenamientos = await prisma.entrenamiento.findMany()
+        return entrenamientos;
+    } catch (error) {
+        return null;
+    }
+}
+
+export async function getEntrenamiento(id) {
+    try {
+        const entrenamiento = await prisma.entrenamiento.findUnique({
+            where: { id },
+            include: {
+                jugadores: true,
+                entrenador: true
+            }
+        })
+        console.log(entrenamiento);
+        return entrenamiento;
+    } catch (error) {
+        return null;
+    }
+}
+
+export async function newEntrenamiento(formData) {
+    try {
+        const fecha = new Date(formData.get('fecha'));
+        const notas = formData.get('notas');
+
+        // // Array con IDs de todos los entrenadores
+        // const ids = await getEntrenadoresIds()
+        // console.log('IDs ', ids);
+
+        // const checks = ids.map(id => formData.get(id.toString()))
+        //     .filter(id => id !== null)
+        //     .map(id => Number(id))
+        // console.log('CHECKS ', checks);
+
+        // const connect = checks.map(id => { return { id: Number(id) } })
+        // console.log('CONNECT ', connect);
+
+        const entrenamiento = await prisma.entrenamiento.create({
+            data: { 
+                fecha, 
+                notas, 
+                // entrenador: { connect },
+            },
+        })
+
+        console.log(entrenamiento);
+        revalidatePath('/entrenamientos')
+    } catch (error) {
+        console.log(error);
+    }
+    redirect('/entrenamientos');
+}
+
+export async function editEntrenamiento(formData) {
+    const id = Number(formData.get('id'));
+    const fecha = new Date(formData.get('fecha'));
+    const notas = formData.get('notas');
+
+    // // Array con IDs de todos los entrenadores
+    // const ids = await getEntrenadoresIds()
+    // console.log('IDs ', ids);
+
+    // const checks = ids.map(id => formData.get(id.toString()))
+    //     .filter(id => id !== null)
+    //     .map(id => Number(id))
+    // console.log('CHECKS ', checks);
+
+    // const connect = checks.map(id => { return { id: Number(id) } })
+    // console.log('CONNECT ', connect);
+
+    // const difference = ids.filter(id => !checks.includes(id));
+    // const disconnect = difference.map(id => { return { id: Number(id) } })
+    // console.log('DISCONNECT ', disconnect);
+
+    try {
+        const entrenamiento = await prisma.entrenamiento.update({
+            where: { id },
+            data: {
+                fecha,
+                notas,
+                // entrenador: { connect, disconnect },
+            },
+        })
+        console.log(entrenamiento);
+        revalidatePath('/entrenamientos')
+    } catch (error) {
+        console.log(error);
+    }
+    redirect('/entrenamientos');
+}
+
+export async function deleteEntrenamiento(formData) {
+    try {
+        const id = Number(formData.get('id'))
+
+        const entrenamiento = await prisma.entrenamiento.delete({
+            where: {
+                id: id,
+            },
+        })
+        console.log(entrenamiento);
+        revalidatePath('/entrenamientos')
+    } catch (error) {
+        console.log(error);
+    }
+    redirect('/entrenamientos');
 }

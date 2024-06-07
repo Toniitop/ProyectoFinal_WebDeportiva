@@ -47,7 +47,13 @@ async function Dashboard() {
                     <hr className="w-full border-gray-400 mt-4 mb-4" />
                     <ul className="flex flex-col items-center text-center w-full">
                         <li className="w-full py-2 px-4 text-xs md:text-sm font-medium text-white focus:outline-none bg-green-600 rounded-lg border border-transparent transition duration-400 hover:bg-teal-600 focus:z-10 focus:ring-4 focus:ring-gray-100 mt-2">
-                            <Link href="/">Jugadores</Link>
+                            <Link href="/categorias">Categorias</Link>
+                        </li>
+                        <li className="w-full py-2 px-4 text-xs md:text-sm font-medium text-white focus:outline-none bg-green-600 rounded-lg border border-transparent transition duration-400 hover:bg-teal-600 focus:z-10 focus:ring-4 focus:ring-gray-100 mt-2">
+                            <Link href="/jugadores">Jugadores</Link>
+                        </li>
+                        <li className="w-full py-2 px-4 text-xs md:text-sm font-medium text-white focus:outline-none bg-green-600 rounded-lg border border-transparent transition duration-400 hover:bg-teal-600 focus:z-10 focus:ring-4 focus:ring-gray-100 mt-2">
+                            <Link href="/entrenamientos">Entrenamientos</Link>
                         </li>
                     </ul>
                 </div>

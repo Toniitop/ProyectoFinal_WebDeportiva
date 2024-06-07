@@ -1,7 +1,4 @@
-import { useState } from 'react';
-
-function Form({ children, action, entrenador, categorias, disabled = false }) {
-    const [categoriaSeleccionada, setCategoriaSeleccionada] = useState(entrenador?.categoriaNombre || '');
+function Form({ children, action, entrenador, disabled = false }) {
 
     return (
         <form action={action} className="container mx-auto p-4 max-w-md bg-white shadow-md rounded-md">
@@ -36,24 +33,6 @@ function Form({ children, action, entrenador, categorias, disabled = false }) {
                 </div>
                 <br />
                 <div className="mb-4">
-                    <label htmlFor='categoria' className="block font-bold text-xl text-black">Categoría:</label>
-                    <select
-                        id="categoria"
-                        name="categoria"
-                        value={categoriaSeleccionada}
-                        onChange={(e) => setCategoriaSeleccionada(e.target.value)}
-                        required
-                        className="w-full text-xl border-b-2 border-gray-300 py-2 focus:outline-none focus:border-blue-500 transition duration-300"
-                    >
-                        <option value="" disabled>-- Seleccione una categoría --</option>
-                        {categorias.map((categoria) => (
-                            <option key={categoria.id} value={categoria.nombre}>
-                                {categoria.nombre}
-                            </option>
-                        ))}
-                    </select>
-                </div>
-                <div className="mb-4">
                     <label htmlFor='fechaNacimiento' className="block font-bold text-xl text-black">Fecha Nacimiento:</label>
                     <input
                         type='date'
@@ -65,7 +44,7 @@ function Form({ children, action, entrenador, categorias, disabled = false }) {
                         className="w-full text-xl text-center border-b-2 border-gray-300 py-2 focus:outline-none focus:border-blue-500 transition duration-300"
                     />
                 </div>
-                <div className="mb-4">
+                {/* <div className="mb-4">
                     <label htmlFor='dni' className="block font-bold text-xl text-black">DNI:</label>
                     <input
                         type='text'
@@ -87,7 +66,7 @@ function Form({ children, action, entrenador, categorias, disabled = false }) {
                         defaultValue={entrenador?.foto}
                         className="w-full text-xl text-center border-b-2 border-gray-300 py-2 focus:outline-none focus:border-blue-500 transition duration-300"
                     />
-                </div>
+                </div> */}
                 <div className="mb-4">
                     <label htmlFor='localidad' className="block font-bold text-xl text-black">Localidad:</label>
                     <input
