@@ -43,9 +43,9 @@ function Footer() {
                                 </li>
                             </ul>
 
-                            <li className="w-full py-2 px-4 text-xs md:text-sm font-medium text-white focus:outline-none bg-blue-700 rounded-lg border border-transparent transition duration-400 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 mt-2">
+                            {/* <li className="w-full py-2 px-4 text-xs md:text-sm font-medium text-white focus:outline-none bg-blue-700 rounded-lg border border-transparent transition duration-400 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 mt-2">
                                 <Link legacyBehavior href="/auth/register">Registrar Usuario</Link>
-                            </li>
+                            </li> */}
                             
                         </div>
                         <div>
