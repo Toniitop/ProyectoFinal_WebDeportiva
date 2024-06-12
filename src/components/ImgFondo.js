@@ -1,11 +1,12 @@
-async function ImgFondo() {
+import React from 'react';
+
+const ImgFondo = () => {
     return (
-        <div className="w-full h-full absolute top-0 left-0 z-[-1]">
+        <div className="fixed inset-0 w-full h-full z-[-1] overflow-hidden">
             <img
-                className="w-full h-full"
+                className="w-full h-full object-cover"
                 src="/fondo.png"
-                alt=""
-                srcSet=""
+                alt="Imagen de fondo"
             />
         </div>
     );

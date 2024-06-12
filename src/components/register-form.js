@@ -1,5 +1,6 @@
 'use client'
 import Button from '@/components/button-form';
+import ImgFondo from './ImgFondo';
 import { useState } from 'react';
 import { register } from '@/lib/actions'
 import { signIn } from 'next-auth/react'; // signIn desde lado CLIENTE
@@ -26,7 +27,8 @@ function RegisterForm() {
     }
     return (
         <>
-            <div className="flex items-center justify-center h-screen bg-gray-200">
+        <ImgFondo />
+            <div className="flex items-center justify-center h-screen">
                 <form
                     action={wrapper}
                     className="bg-green-100 p-8 shadow-md rounded-md max-w-md w-full"

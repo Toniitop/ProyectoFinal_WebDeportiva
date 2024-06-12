@@ -11,20 +11,20 @@ function About() {
                 <title>About - Antonio Ortiz Rodríguez</title>
                 <meta name="description" content="Conoce más sobre Antonio Ortiz Rodríguez, desarrollador web especializado en Next.js, Tailwind y PostgreSQL." />
             </Head>
+            <ImgFondo alt="Fondo decorativo" />
             <div className="relative z-10 flex flex-col items-center justify-center min-h-screen">
-                <ImgFondo alt="Fondo decorativo" />
                 <div className="max-w-4xl mx-auto p-6 md:p-12 bg-gray-200 rounded-lg shadow-lg my-8">
                     <div className="flex justify-center mb-6">
                         <Image
                             src="/yo.png"
                             alt="Foto de Antonio Ortiz Rodríguez"
-                            width={150} // Ajusta el tamaño según sea necesario
+                            width={150}
                             height={150}
                             className="rounded-full object-cover"
                         />
                     </div>
                     <p className="text-gray-800 text-justify leading-relaxed">
-                        ¡Hola!, me llamo <strong>Antonio J. Ortiz Rodríguez</strong>, soy desarrollador web y he creado una aplicación web SPA utilizando Next.js, Tailwind y PostgreSQL como base de datos.
+                        ¡Hola!, me llamo <strong>Antonio J. Ortiz Rodríguez</strong>, soy un proyecto de desarrollador web y he creado una aplicación web SPA utilizando Next.js, Tailwind y PostgreSQL como base de datos.
                         Esta aplicación se ejecuta mediante el framework de Next.js, permitiendo un desarrollo eficiente y dinámico.
                         También he implementado Tailwind para el diseño responsivo y estilizado de la interfaz, aprovechando su flexibilidad y eficiencia.
                         La base de datos PostgreSQL maneja y organiza toda la información de la aplicación, garantizando un rendimiento robusto y confiable.

@@ -23,12 +23,11 @@ export default auth((req) => {
 //CAMBIAR POR LAS RUTAS DE LA WEB QUE HAGAMOS
 export const config = {
     matcher: [
-        // "/dashboard(.*)",
-        // "/admin(.*)",
-        // "/profesores(.*)",
-        // "/alumnos",
-        // "/alumnos/new",
-        // "/alumnos/edit",
-        // "/alumnos/delete",
+        "/dashboard(.*)",
+        "/admin(.*)",
+        "/categorias(.*)",
+        "/entrenadores(.*)",
+        "/entrenamientos(.*)",
+        "/jugadores(.*)",
     ],
 };

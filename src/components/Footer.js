@@ -54,10 +54,10 @@ function Footer() {
                             <h2 className="text-white mb-6 text-sm font-semibold text-gray-900 uppercase">Legal</h2>
                             <ul className="text-gray-300 font-medium">
                                 <li className="mb-4 hover:text-white">
-                                    <Link legacyBehavior href="#">Política de Privacidad</Link>
+                                    <Link legacyBehavior href="/">Política de Privacidad</Link>
                                 </li>
                                 <li className="hover:text-white">
-                                    <Link legacyBehavior href="#">Terminos y Condiciones</Link>
+                                    <Link legacyBehavior href="/">Terminos y Condiciones</Link>
                                 </li>
                             </ul>
                         </div>
