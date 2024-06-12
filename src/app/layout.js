@@ -17,7 +17,7 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <body className={`${inter.className} bg-gray-200 flex flex-col min-h-screen`}>
+      <body className={`${inter.className} bg-gray-300 flex flex-col min-h-screen`}>
         <Header />
         <main className="flex-grow">
           {children}

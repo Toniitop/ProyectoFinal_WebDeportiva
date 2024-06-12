@@ -1,17 +1,17 @@
-import { getEntrenamiento, getJugadores } from "@/lib/actions";
+import { getCategoria, getJugadores } from "@/lib/actions";
 
-async function ListaJugadores({ entrenamientoId, disabled }) {
+async function ListaCategoriasJugadores({ categoriaId, disabled }) {
     const jugadores = await getJugadores();
 
-    let entrenamiento = null;
-    let jugadorEntreno = null;
-    if (entrenamientoId) {
-        entrenamiento = await getEntrenamiento(entrenamientoId)
-        jugadorEntreno = entrenamiento.jugadores.map(p => p.id);
+    let categoria = null;
+    let jugadorCategoria = null;
+    if (categoriaId) {
+        categoria = await getCategoria(categoriaId)
+        jugadorCategoria = categoria.jugadores.map(p => p.id);
     }
 
     return (
-        <div className="border rounded bg-cyan-200 p-4 mt-4">
+        <div className="border rounded bg-cyan-300 p-4 mt-4">
             <fieldset disabled={disabled} className="p-4 mt-2 relative">
                 <legend className="text-xl font-bold mb-2">
                     Jugadores
@@ -21,13 +21,13 @@ async function ListaJugadores({ entrenamientoId, disabled }) {
                         {jugadores?.map((jugador) => (
                             <div key={jugador.id} className="flex items-center mb-2">
                                 <input
-                                    type='checkbox'
+                                    type='radio'
                                     name={jugador.id}
                                     value={jugador.id}
-                                    defaultChecked={jugador.id === jugadorEntreno}
+                                    defaultChecked={jugador.id === jugadorCategoria}
                                     className="mr-2"
                                 />
-                                <span className="flex-grow">{jugador.nombre} {jugador.apellido}</span>
+                                <span className="flex-grow">{jugador.nombre}</span>
                             </div>
                         ))}
                     </div>
@@ -37,7 +37,7 @@ async function ListaJugadores({ entrenamientoId, disabled }) {
     );
 }
 
-export default ListaJugadores;
+export default ListaCategoriasJugadores;
 
 
 //esto es para que en los jugadores aparezca su entrenador asociado

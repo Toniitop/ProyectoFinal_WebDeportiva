@@ -13,11 +13,13 @@ async function page({ params }) {
   })
 
   return (
-    <div className="container mx-auto p-4">
-      <h3 className="inline-block bg-green-600 text-white text-2xl font-bold mb-4 p-2 rounded-md">Ver Jugador</h3>
-      <FormularioJugador action={getJugador} jugador={jugador} disabled={true} />
-      <AtrasJugadores />
-    </div>
+    <>
+      <div className="container mx-auto p-4">
+        <h3 className="inline-block bg-green-500 text-white text-2xl font-bold mb-4 p-2 rounded-md">Ver Jugador</h3>
+        <FormularioJugador action={getJugador} jugador={jugador} disabled={true} />
+        <AtrasJugadores />
+      </div>
+    </>
   )
 }
 

@@ -13,7 +13,7 @@ async function ListaCategorias({ jugadorId, disabled }) {
     console.log(`CATEGORÍA del JUGADOR ${jugadorId}: `, categoriaId);
 
     return (
-        <div className="border rounded bg-gray-300 p-4 mt-4">
+        <div className="border rounded bg-cyan-300 p-4 mt-4">
             <fieldset disabled={disabled} className="p-4 mt-2 relative">
                 <legend className="text-xl font-bold mb-2">
                     Categorías

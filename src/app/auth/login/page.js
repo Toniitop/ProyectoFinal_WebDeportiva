@@ -29,7 +29,7 @@ function page({ searchParams }) {
           <svg tabindex="0" class="focus:outline-none" aria-label="logo" role="banner" width="188" height="74" viewBox="0 0 188 74" fill="none" xmlns="http:www.w3.org/2000/svg"></svg>
 
           <div class="bg-white shadow rounded lg:w-1/3  md:w-1/2 w-full p-10 mt-6 mb-20">
-            <p tabindex="0" class="focus:outline-none text-center text-2xl font-extrabold leading-6 text-gray-800 uppercase">Login</p>
+            <p tabindex="0" class="focus:outline-none text-center text-2xl font-extrabold leading-6 text-green-500 uppercase">Login</p>
 
             <OAuthForm error={error} />
             <LoginForm error={error} />

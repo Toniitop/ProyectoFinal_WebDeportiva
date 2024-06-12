@@ -4,11 +4,11 @@ import ListaEntrenadores from './ListaEntrenadores';
 
 function Form({ children, action, entrenamiento, disabled = false }) {
     return (
-        <form action={action} className="container mx-auto p-4 max-w-md bg-white shadow-md rounded-md">
+        <form action={action} className="container mx-auto p-6 max-w-lg bg-green-200 shadow-lg rounded-lg mt-8">
             <input type='hidden' name='id' value={entrenamiento?.id} />
-            <fieldset disabled={disabled} className="mb-4">
-                <div className="mb-4">
-                    <label htmlFor='fecha' className="block font-bold text-xl text-black">Fecha:</label>
+            <fieldset disabled={disabled} className="space-y-6">
+                <div>
+                    <label htmlFor='fecha' className="block text-lg font-semibold text-gray-700">Fecha:</label>
                     <input
                         type='date'
                         id='fecha'
@@ -16,32 +16,38 @@ function Form({ children, action, entrenamiento, disabled = false }) {
                         placeholder='dd/mm/aaaa'
                         defaultValue={entrenamiento?.fecha ? entrenamiento.fecha.toISOString().split('T')[0] : ''}
                         required
-                        className="w-full text-xl text-center border-b-2 border-gray-300 py-2 focus:outline-none focus:border-blue-500 transition duration-300"
+                        className="w-full text-lg border-b-2 border-gray-300 py-2 focus:outline-none focus:border-blue-500 transition duration-300"
                     />
                 </div>
-                <div className="mb-4">
-                    <label htmlFor='notas' className="block font-bold text-xl text-black">Notas:</label>
+                <div>
+                    <label htmlFor='notas' className="block text-lg font-semibold text-gray-700">Notas:</label>
                     <textarea
                         id='notas'
                         name='notas'
                         placeholder='Notas Entrenamiento'
                         defaultValue={entrenamiento?.notas}
-                        className="w-full text-xl text-center border-b-2 border-gray-300 py-2 focus:outline-none focus:border-blue-500 transition duration-300"
+                        className="w-full text-lg border-b-2 border-gray-300 py-2 focus:outline-none focus:border-blue-500 transition duration-300"
                     />
                 </div>
             </fieldset>
             <Suspense fallback={'Loading ...'}>
-                <div className="overflow-x-auto">
-                    <ListaJugadores entrenamientoId={entrenamiento?.id} disabled={disabled} />
+                <div className="mt-6">
+                    <h2 className="text-lg font-semibold text-gray-700 mb-4">Jugadores</h2>
+                    <div className="overflow-x-auto bg-green-100 rounded-lg p-4 shadow-inner">
+                        <ListaJugadores entrenamientoId={entrenamiento?.id} disabled={disabled} />
+                    </div>
                 </div>
-                <hr />
-                <div className="overflow-x-auto">
-                    <ListaEntrenadores entrenamientoId={entrenamiento?.id} disabled={disabled} />
+                <hr className="my-6 border-gray-300" />
+                <div>
+                    <h2 className="text-lg font-semibold text-gray-700 mb-4">Entrenadores</h2>
+                    <div className="overflow-x-auto bg-green-100 rounded-lg p-4 shadow-inner">
+                        <ListaEntrenadores entrenamientoId={entrenamiento?.id} disabled={disabled} />
+                    </div>
                 </div>
             </Suspense>
             {children}
-        </form >
-    )
+        </form>
+    );
 }
 
-export default Form
+export default Form;
