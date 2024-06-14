@@ -6,7 +6,7 @@ async function atras() {
         <>
             <Link legacyBehavior href="/entrenadores">
                 <a>
-                    <img src="/flecha.svg" alt="Flecha" className="w-16 h-16" />
+                    <img src="/flecha.svg" alt="Flecha" className="mt-4 w-16 h-16" />
                 </a>
             </Link>
         </>
