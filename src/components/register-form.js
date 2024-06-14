@@ -33,7 +33,7 @@ function RegisterForm() {
                     action={wrapper}
                     className="bg-green-100 p-8 shadow-md rounded-md max-w-md w-full"
                 >
-                    <h2 className="text-2xl font-bold mb-6 text-center text-green-600 hover:text-teal-500 transition duration-300">REGISTRO</h2>
+                    <h2 className="text-2xl font-bold mb-6 text-center text-green-600 hover:text-teal-500 transition duration-300">INFORMACIÓN</h2>
                     <br />
                     <div className="mb-4">
                         <label className="block text-gray-800 text-sm font-medium mb-2">
