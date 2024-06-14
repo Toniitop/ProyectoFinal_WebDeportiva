@@ -14,7 +14,7 @@ export default async function Home() {
         <>
             <ImgFondo />
             <div className="container mx-auto p-4 max-w-screen-lg grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                <Link legacyBehavior href="/categorias/new">
+                <Link legacyBehavior href="/entrenadores/new">
                     <a className="flex items-center justify-center bg-cyan-700 text-white px-4 py-2 rounded-md hover:bg-gradient-to-r hover:from-blue-500 hover:to-teal-500 hover:text-white transition duration-400">
                         <Image src='/nuevo.svg' alt='nuevo' width="20" height="20" />
                         <span className="ml-2 font-bold text-lg">Nuevo Entrenador</span>
